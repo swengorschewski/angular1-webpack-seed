@@ -50,7 +50,7 @@ module.exports = (env) => {
       new HtmlWebpackPlugin({ template: root(SRC, 'index.html'), chunksSortMode: 'dependency' }),
       new ExtractTextPlugin('styles.[hash].css'),
       // ngAnnotate needs to run before uglify!!!!
-      //new ngAnnotatePlugin({ add: true }),
+      new ngAnnotatePlugin({ add: true }),
       new UglifyJsPlugin({
         beautify: false,
         sourceMap: true,

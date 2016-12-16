@@ -1,33 +1,33 @@
-const { root } = require('./utils.js');
+const { root, SRC } = require('./utils.js');
 
 require('ts-node/register');
 
 exports.config = {
-    baseUrl: 'http://localhost:9001/',
+  baseUrl: 'http://localhost:9001/',
 
-    specs: [root('src/**/*.e2e.ts')],
+  specs: [root(SRC, '**/*.e2e.ts')],
 
-    framework: 'jasmine2',
+  framework: 'jasmine2',
 
-    allScriptsTimeout: 110000,
+  allScriptsTimeout: 110000,
 
-    jasmineNodeOpts: {
-        showTiming: true,
-        showColors: true,
-        isVerbose: false,
-        includeStackTrace: false,
-        defaultTimeoutInterval: 400000
-    },
-    directConnect: true,
+  jasmineNodeOpts: {
+    showTiming: true,
+    showColors: true,
+    isVerbose: false,
+    includeStackTrace: false,
+    defaultTimeoutInterval: 400000
+  },
+  directConnect: true,
 
-    capabilities: {
-        'browserName': 'chrome',
-        'chromeOptions': {
-            'args': ['show-fps-counter=true']
-        }
-    },
-
-    onPrepare: function () {
-        browser.ignoreSynchronization = true;
+  capabilities: {
+    'browserName': 'chrome',
+    'chromeOptions': {
+      'args': ['show-fps-counter=true']
     }
+  },
+
+  onPrepare: function () {
+    browser.ignoreSynchronization = true;
+  }
 };

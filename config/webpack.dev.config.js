@@ -8,50 +8,50 @@ const commonConfig = require('./webpack.common.js');
 const { SRC, STYLES, root } = require('./utils');
 
 module.exports = (env) => {
-    console.log('starting development build');
+  console.log('starting development build');
 
-    return webpackMerge(commonConfig(env), {
-        entry: {
-            main: root(SRC, 'main.ts'),
-            vendorStyles: root(SRC, STYLES, 'vendor.scss'),
-            appStyles: root(SRC, STYLES, 'main.scss')
+  return webpackMerge(commonConfig(env), {
+    entry: {
+      main: root(SRC, 'main.ts'),
+      vendorStyles: root(SRC, STYLES, 'vendor.scss'),
+      appStyles: root(SRC, STYLES, 'main.scss')
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(ts|js)$/,
+          use: ['ng-annotate-loader', 'awesome-typescript-loader'],
+          include: [root(SRC)],
+          exclude: [/\.(spec|e2e)\.(ts|js)$/]
         },
-        module: {
-            rules: [
-                {
-                    test: /\.(ts|js)$/,
-                    use: ['ng-annotate-loader', 'awesome-typescript-loader'],
-                    include: [root(SRC)],
-                    exclude: [/\.(spec|e2e)\.(ts|js)$/]
-                },
-                {
-                    test: /\.less$/,
-                    use: ['style-loader', 'css-loader?sourceMap', 'postcss-loader?sourceMap', 'less-loader?sourceMap']
-                },
-                {
-                    test: /\.scss$/,
-                    use: ['style-loader', 'css-loader?sourceMap', 'postcss-loader?sourceMap', 'sass-loader?sourceMap']
-                },
-                {
-                    test: /\.(png|jpg)$/,
-                    loader: 'url-loader'
-                },
-                {
-                    test: /\.(ttf|eot|svg|woff|woff2)(\?[a-z0-9]+)?$/,
-                    loader: 'url-loader'
-                }
-            ]
+        {
+          test: /\.less$/,
+          use: ['style-loader', 'css-loader?sourceMap', 'postcss-loader?sourceMap', 'less-loader?sourceMap']
         },
-        plugins: [
-            new HtmlWebpackPlugin({ template: './src/index.html', chunksSortMode: 'dependency' }),
-            new LoaderOptionsPlugin({
-                minimize: false,
-                debug: true,
-                options: {
-                    postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
-                    context: __dirname
-                }
-            })
-        ]
-    });
-}
+        {
+          test: /\.scss$/,
+          use: ['style-loader', 'css-loader?sourceMap', 'postcss-loader?sourceMap', 'sass-loader?sourceMap']
+        },
+        {
+          test: /\.(png|jpg)$/,
+          loader: 'url-loader'
+        },
+        {
+          test: /\.(ttf|eot|svg|woff|woff2)(\?[a-z0-9]+)?$/,
+          loader: 'url-loader'
+        }
+      ]
+    },
+    plugins: [
+      new HtmlWebpackPlugin({ template: root(SRC, 'index.html'), chunksSortMode: 'dependency' }),
+      new LoaderOptionsPlugin({
+        minimize: false,
+        debug: true,
+        options: {
+          postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
+          context: __dirname
+        }
+      })
+    ]
+  });
+};

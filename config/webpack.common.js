@@ -18,6 +18,7 @@ module.exports = (env) => {
       proxy: require('./proxy.json'),
       stats: 'minimal'
     },
-    plugins: [new CheckerPlugin()]
+    plugins: [new CheckerPlugin()],
+    performance: { hints: false }
   };
 };

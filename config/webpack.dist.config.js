@@ -78,6 +78,11 @@ module.exports = (env) => {
           context: __dirname
         }
       })
-    ]
+    ],
+    performance: {
+      maxAssetSize: 200000,
+      maxEntrypointSize: 200000,
+      hints: 'warning'
+    }
   });
 };

@@ -1,11 +1,18 @@
 import * as angular from 'angular';
 
-class TSController {
+export class TSController {
   /*@ngInject*/
-  constructor(private $http: angular.IHttpService) { }
+  constructor($http: ng.IHttpService) { }
+
+  get title() {
+    return 'TS Component';
+  }
 }
 
-export const tsComponent: angular.IComponentOptions = {
-  template: '<h2>TS Component</h2>',
-  controller: TSController
+export const tsComponent = {
+  name: 'tsComponent',
+  options: <angular.IComponentOptions>{
+    template: '<h2>{{ $ctrl.title }}</h2>',
+    controller: TSController
+  }
 };

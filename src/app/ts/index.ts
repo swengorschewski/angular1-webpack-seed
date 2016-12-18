@@ -4,5 +4,5 @@ import { tsComponent } from './ts.component';
 
 export default angular
   .module('ts', [])
-  .component('tsComponent', tsComponent)
+  .component(tsComponent.name, tsComponent.options)
   .name;

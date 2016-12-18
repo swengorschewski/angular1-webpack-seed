@@ -1,11 +1,16 @@
-import aboutModule from './index.js';
+import * as angular from 'angular';
 
-describe('testing js tests', () => {
-  beforeEach(angular.mock.module(aboutModule));
+import es6Module from '../';
+import es6Component from './es6.component';
 
-  beforeEach(angular.mock.inject(() => { }));
+describe('TSComponent', () => {
+  let controller;
 
-  it('should be totally true', () => {
-    expect(true).toBe(true);
+  beforeEach(angular.mock.module(es6Module));
+  beforeEach(angular.mock.inject(($componentController, $httpBackend) => {
+    controller = $componentController('es6Component', { $http: $httpBackend }, null);
+  }));
+  it('should return a string', () => {
+    expect(controller.title).toBe('ES6 Component');
   });
 });

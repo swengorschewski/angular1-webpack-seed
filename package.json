@@ -18,6 +18,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/angular": "^1.5.20",
+    "@types/angular-mocks": "^1.5.8",
     "@types/jasmine": "^2.5.38",
     "@types/node": "0.0.2",
     "angular-mocks": "^1.5.9",

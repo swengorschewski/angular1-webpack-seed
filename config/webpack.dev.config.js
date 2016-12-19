@@ -1,5 +1,6 @@
 const autoprefixer = require('autoprefixer');
 const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const webpackMerge = require('webpack-merge');
@@ -12,6 +13,8 @@ module.exports = (env) => {
 
   return webpackMerge(commonConfig(env), {
     entry: {
+      polyfills: root(SRC, 'polyfills.ts'),
+      vendor: root(SRC, 'vendor.ts'),
       main: root(SRC, 'main.ts'),
       vendorStyles: root(SRC, STYLES, 'vendor.scss'),
       appStyles: root(SRC, STYLES, 'main.scss')
@@ -51,7 +54,10 @@ module.exports = (env) => {
           postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
           context: __dirname
         }
-      })
+      }),
+      new CommonsChunkPlugin({
+        name: ['polyfills', 'vendor'].reverse()
+      }),
     ]
   });
 };

@@ -1,3 +1,4 @@
+import '../src/polyfills';
 import angular from 'angular';
 import mocks from 'angular-mocks';
 

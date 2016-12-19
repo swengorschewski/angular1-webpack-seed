@@ -60,6 +60,8 @@
   },
   "dependencies": {
     "angular": "~1.6.0",
-    "bootstrap-sass": "~3.3.7"
+    "bootstrap-sass": "~3.3.7",
+    "core-js": "^2.4.1",
+    "rxjs": "^5.0.0-rc.1"
   }
 }

@@ -3,7 +3,7 @@ const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 
 module.exports = (env) => {
   return {
-    devtool: 'source-map',
+    devtool: 'eval-cheap-module-source-map',
     output: {
       path: root(DIST),
       filename: '[name].[hash].js'

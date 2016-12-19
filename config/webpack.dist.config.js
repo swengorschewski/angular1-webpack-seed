@@ -13,6 +13,7 @@ module.exports = (env) => {
   console.log('starting production build');
 
   return webpackMerge(commonConfig(env), {
+    devtool: 'source-map',
     entry: {
       main: [
         root(SRC, 'main.ts'),

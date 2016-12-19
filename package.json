@@ -4,9 +4,9 @@
   "description": "A starter project for angular and typescript",
   "scripts": {
     "start": "npm run serve:dev",
-    "build:dev": "rimraf ./dist && webpack --config ./config/webpack.dev.config.js --progress",
+    "build:dev": "rimraf ./dist && webpack --config ./config/webpack.dev.config.js --progress --profile",
     "build:dist": "rimraf ./dist && webpack --config ./config/webpack.dist.config.js --progress",
-    "serve:dev": "webpack-dev-server --config ./config/webpack.dev.config.js --hot --inline --progress",
+    "serve:dev": "webpack-dev-server --config ./config/webpack.dev.config.js --hot --inline --progress --profile",
     "serve:dist": "webpack-dev-server --config ./config/webpack.dist.config.js --hot --inline --progress",
     "test": "karma start ./config/karma.conf.js",
     "test:watch": "npm test -- --auto-watch --no-single-run",

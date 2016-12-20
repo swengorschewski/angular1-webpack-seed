@@ -8,7 +8,7 @@
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "sourceMap": true,
-    "noEmitHelpers": false,
+    "noEmitHelpers": true,
     "strictNullChecks": false,
     "noImplicitAny": true,
     "lib": [

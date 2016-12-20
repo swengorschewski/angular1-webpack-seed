@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   SRC: 'src',
-  DIST: 'dist',
+  DIST: '.tmp/dist',
   ASSETS: 'assets',
   STYLES: 'scss',
   root: (...args) => {

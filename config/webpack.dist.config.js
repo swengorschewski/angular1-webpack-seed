@@ -1,4 +1,5 @@
 const autoprefixer = require('autoprefixer');
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -15,6 +16,7 @@ module.exports = (env) => {
   return webpackMerge(commonConfig(env), {
     devtool: 'source-map',
     entry: {
+      vendor: [root(SRC, 'polyfills.ts'), root(SRC, 'vendor.ts')],
       main: [
         root(SRC, 'main.ts'),
         root(SRC, STYLES, 'vendor.scss'),
@@ -48,6 +50,7 @@ module.exports = (env) => {
       ]
     },
     plugins: [
+      new CommonsChunkPlugin({ name: ['vendor'] }),
       new HtmlWebpackPlugin({ template: root(SRC, 'index.html'), chunksSortMode: 'dependency' }),
       new ExtractTextPlugin('styles.[hash].css'),
       // ngAnnotate needs to run before uglify!!!!

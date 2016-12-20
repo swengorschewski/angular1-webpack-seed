@@ -46,6 +46,7 @@ module.exports = (env) => {
       ]
     },
     plugins: [
+      new CommonsChunkPlugin({ name: ['polyfills', 'vendor'].reverse() }),
       new HtmlWebpackPlugin({ template: root(SRC, 'index.html'), chunksSortMode: 'dependency' }),
       new LoaderOptionsPlugin({
         minimize: false,
@@ -54,10 +55,7 @@ module.exports = (env) => {
           postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
           context: __dirname
         }
-      }),
-      new CommonsChunkPlugin({
-        name: ['polyfills', 'vendor'].reverse()
-      }),
+      })
     ]
   });
 };

@@ -11,7 +11,7 @@ module.exports = function (config) {
     },
     reporters: ['mocha', 'coverage'],
     coverageReporter: {
-      dir: root('coverage'),
+      dir: root('.tmp', 'coverage'),
       reporters: [
         { type: 'html', subdir: 'coverage-html' }
       ]

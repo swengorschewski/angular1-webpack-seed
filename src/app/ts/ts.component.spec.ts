@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 
 import tsModule from '../';
-import { TSController, tsComponent } from './ts.component';
+import { tsComponent, TSController } from './ts.component';
 
 describe('TSComponent', () => {
   let controller: TSController;

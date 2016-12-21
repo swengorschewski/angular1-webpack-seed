@@ -22,6 +22,13 @@ module.exports = (env) => {
     module: {
       rules: [
         {
+          enforce: 'pre',
+          test: /\.(js|ts)$/,
+          loader: 'tslint-loader',
+          include: root(SRC),
+          exclude: [/node_modules/]
+        },
+        {
           test: /\.(ts|js)$/,
           use: ['ng-annotate-loader', 'awesome-typescript-loader'],
           include: [root(SRC)],

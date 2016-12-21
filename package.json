@@ -54,6 +54,7 @@
     "ts-helpers": "1.1.2",
     "ts-node": "~1.7.0",
     "tslint": "~4.0.2",
+    "tslint-loader": "^3.3.0",
     "typescript": "~2.1.4",
     "url-loader": "~0.5.7",
     "webpack": "2.2.0-rc.1",

@@ -41,6 +41,13 @@
       "check-operator",
       "check-separator",
       "check-type"
+    ],
+    "ordered-imports": [
+      true
+    ],
+    "no-consecutive-blank-lines": [
+      true,
+      1
     ]
   },
   "rules": {
@@ -96,6 +103,17 @@
       "check-operator",
       "check-separator",
       "check-type"
+    ],
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "any",
+        "named-imports-order": "case-insensitive"
+      }
+    ],
+    "no-consecutive-blank-lines": [
+      true,
+      1
     ]
   }
 }

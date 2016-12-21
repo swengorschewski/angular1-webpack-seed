@@ -5,7 +5,7 @@ require('ts-node/register');
 exports.config = {
   baseUrl: 'http://localhost:9001/',
 
-  specs: [root(SRC, '**/*.e2e.ts')],
+  specs: [root(SRC, '**/*.e2e.ts'), root(SRC, '**/*.e2e.js')],
 
   framework: 'jasmine2',
 

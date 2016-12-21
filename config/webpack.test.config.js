@@ -27,7 +27,7 @@ module.exports = (env) => {
           loader: 'istanbul-instrumenter-loader',
           include: root(SRC),
           exclude: [
-            /\.(e2e|spec)\.ts$/,
+            /\.(e2e|spec)\.(ts|js)$/,
             /node_modules/
           ]
         }

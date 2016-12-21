@@ -1,7 +1,7 @@
 {
-  "name": "angular-webpack-starter",
-  "version": "0.9.1",
-  "description": "A starter project for angular and typescript",
+  "name": "angular1-webpack-starter",
+  "version": "1.0.0",
+  "description": "A starter for angular1 projects",
   "scripts": {
     "start": "npm run serve:dev",
     "build:dev": "rimraf ./dist && webpack --config ./config/webpack.dev.config.js --progress",
@@ -66,8 +66,8 @@
   "dependencies": {
     "angular": "~1.6.0",
     "bootstrap-sass": "~3.3.7",
-    "core-js": "^2.4.1",
+    "core-js": "~2.4.1",
     "ng-metadata": "^3.0.3",
-    "rxjs": "^5.0.0-rc.1"
+    "rxjs": "~5.0.1"
   }
 }

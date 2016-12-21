@@ -1,5 +1,4 @@
 const autoprefixer = require('autoprefixer');
-const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');

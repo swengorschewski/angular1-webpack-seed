@@ -12,7 +12,7 @@ export class TSController {
 export const tsComponent = {
   name: 'tsComponent',
   options: <angular.IComponentOptions>{
-    template: '<h2>{{ $ctrl.title }}</h2>',
+    template: require('./ts.component.html'),
     controller: TSController
   }
 };

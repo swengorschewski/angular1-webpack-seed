@@ -32,6 +32,12 @@ module.exports = (env) => {
           exclude: [/\.(spec|e2e)\.(ts|js)$/]
         },
         {
+          test: /\.html$/,
+          loader: 'html-loader',
+          include: [root(SRC)],
+          query: { minimize: true }
+        },
+        {
           test: /\.less$/,
           loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader?sourceMap!less-loader?sourceMap')
         },
@@ -51,7 +57,11 @@ module.exports = (env) => {
     },
     plugins: [
       new CommonsChunkPlugin({ name: ['vendor'] }),
-      new HtmlWebpackPlugin({ template: root(SRC, 'index.html'), chunksSortMode: 'dependency' }),
+      new HtmlWebpackPlugin({
+        template: root(SRC, 'index.html'),
+        chunksSortMode: 'dependency',
+        favicon: root(SRC, ASSETS, 'favicon.ico')
+      }),
       new ExtractTextPlugin('styles.[hash].css'),
       // ngAnnotate needs to run before uglify!!!!
       new ngAnnotatePlugin({ add: true }),

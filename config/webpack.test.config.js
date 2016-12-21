@@ -17,6 +17,11 @@ module.exports = (env) => {
           include: [root(SRC)]
         },
         {
+          test: /\.html$/,
+          loader: 'html-loader',
+          include: [root(SRC)]
+        },
+        {
           enforce: 'post',
           test: /\.(js|ts)$/,
           loader: 'istanbul-instrumenter-loader',

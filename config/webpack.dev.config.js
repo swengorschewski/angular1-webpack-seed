@@ -6,7 +6,7 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const webpackMerge = require('webpack-merge');
 
 const commonConfig = require('./webpack.common.js');
-const { SRC, STYLES, root } = require('./utils');
+const { SRC, STYLES, ASSETS, root } = require('./utils');
 
 module.exports = (env) => {
   console.log('starting development build');
@@ -35,6 +35,11 @@ module.exports = (env) => {
           exclude: [/\.(spec|e2e)\.(ts|js)$/]
         },
         {
+          test: /\.html$/,
+          loader: 'html-loader',
+          include: [root(SRC)]
+        },
+        {
           test: /\.less$/,
           use: ['style-loader', 'css-loader?sourceMap', 'postcss-loader?sourceMap', 'less-loader?sourceMap']
         },
@@ -43,7 +48,7 @@ module.exports = (env) => {
           use: ['style-loader', 'css-loader?sourceMap', 'postcss-loader?sourceMap', 'sass-loader?sourceMap']
         },
         {
-          test: /\.(png|jpg)$/,
+          test: /\.(png|jpg|ico|gif)$/,
           loader: 'url-loader'
         },
         {
@@ -54,7 +59,11 @@ module.exports = (env) => {
     },
     plugins: [
       new CommonsChunkPlugin({ name: ['polyfills', 'vendor'].reverse() }),
-      new HtmlWebpackPlugin({ template: root(SRC, 'index.html'), chunksSortMode: 'dependency' }),
+      new HtmlWebpackPlugin({
+        template: root(SRC, 'index.html'),
+        chunksSortMode: 'dependency',
+        favicon: root(SRC, ASSETS, 'favicon.ico')
+      }),
       new LoaderOptionsPlugin({
         minimize: false,
         debug: true,

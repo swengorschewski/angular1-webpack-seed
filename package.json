@@ -8,6 +8,7 @@
     "build:dist": "rimraf ./dist && webpack --config ./config/webpack.dist.config.js --progress",
     "serve:dev": "webpack-dev-server --config ./config/webpack.dev.config.js --hot --inline --progress",
     "serve:dist": "webpack-dev-server --config ./config/webpack.dist.config.js --hot --inline --progress",
+    "lint": "tslint './src/**/*.ts' && tslint './src/**/*.js' && tslint './config/**/*.js'",
     "test": "karma start ./config/karma.conf.js",
     "test:watch": "npm test -- --auto-watch --no-single-run",
     "pree2e": "webdriver-manager update",

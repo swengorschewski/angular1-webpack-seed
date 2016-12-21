@@ -43,7 +43,11 @@
       "check-type"
     ],
     "ordered-imports": [
-      true
+      true,
+      {
+        "import-sources-order": "any",
+        "named-imports-order": "case-insensitive"
+      }
     ],
     "no-consecutive-blank-lines": [
       true,

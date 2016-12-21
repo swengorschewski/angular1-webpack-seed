@@ -7,7 +7,7 @@ You need Node.js in version 6+ with npm 3+ or [yarn](https://yarnpkg.com/) (reco
 
 ## Development
 Install all necessary dependencies
-```
+```bash
 npm install
 # or
 yarn

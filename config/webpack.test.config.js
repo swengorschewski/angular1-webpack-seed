@@ -8,6 +8,7 @@ module.exports = (env) => {
   console.log('starting development build');
 
   return webpackMerge(commonConfig(env), {
+    devtool: 'inline-source-map',
     entry: {},
     module: {
       rules: [

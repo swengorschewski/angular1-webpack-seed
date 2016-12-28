@@ -1,16 +1,16 @@
 const autoprefixer = require('autoprefixer');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const webpackMerge = require('webpack-merge');
 
 const commonConfig = require('./webpack.common.js');
-const { SRC, DIST, STYLES, ASSETS, root } = require('./utils');
+const { root, ASSETS, DIST, SRC, STYLES } = require('./utils');
 
-module.exports = (env) => {
+module.exports = (env = {}) => {
   console.log('starting production build');
 
   return webpackMerge(commonConfig(env), {

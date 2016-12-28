@@ -1,5 +1,6 @@
-const { SRC, DIST, root } = require('./utils');
+const { root, stringifyEnv, DIST, SRC } = require('./utils');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
+const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 module.exports = (env) => {
   return {
@@ -18,7 +19,10 @@ module.exports = (env) => {
       proxy: require('./proxy.json'),
       stats: 'minimal'
     },
-    plugins: [new CheckerPlugin()],
+    plugins: [
+      new CheckerPlugin(),
+      new DefinePlugin(stringifyEnv(env))
+    ],
     performance: { hints: false }
   };
 };

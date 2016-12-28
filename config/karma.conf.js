@@ -1,5 +1,5 @@
 const webpackConfig = require('./webpack.test.config')({});
-const { root, SRC } = require('./utils');
+const { isTestWatch,  root, SRC } = require('./utils');
 const tests = './karma-spec.js';
 
 module.exports = function (config) {
@@ -9,7 +9,7 @@ module.exports = function (config) {
     preprocessors: {
       [tests]: ['webpack', 'sourcemap']
     },
-    reporters: ['mocha', 'coverage'],
+    reporters: isTestWatch ? ['mocha'] : ['mocha', 'coverage'],
     coverageReporter: {
       dir: root('.tmp', 'coverage'),
       reporters: [

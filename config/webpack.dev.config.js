@@ -5,9 +5,9 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const webpackMerge = require('webpack-merge');
 
 const commonConfig = require('./webpack.common.js');
-const { SRC, STYLES, ASSETS, root } = require('./utils');
+const { root, ASSETS, SRC, STYLES } = require('./utils');
 
-module.exports = (env) => {
+module.exports = (env = {}) => {
   console.log('starting development build');
 
   return webpackMerge(commonConfig(env), {

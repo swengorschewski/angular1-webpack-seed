@@ -1,8 +1,11 @@
+const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
+const DefinePlugin = require('webpack/lib/DefinePlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const webpackMerge = require('webpack-merge');
 
 const commonConfig = require('./webpack.common.js');
-const { isTestWatch, root, SRC } = require('./utils');
+const { isTestWatch, stringifyEnv, root, DIST, SRC } = require('./utils');
+
 const istanbulLoader = {
   enforce: 'post',
   test: /\.(js|ts)$/,
@@ -25,20 +28,27 @@ const baseRules = [{
 }];
 
 module.exports = (env = {}) => {
-  console.log('starting development build');
-
-  return webpackMerge(commonConfig(env), {
+  return {
     devtool: 'inline-source-map',
-    entry: {},
     module: {
       rules: isTestWatch ? baseRules : baseRules.concat(istanbulLoader)
     },
+    output: {
+      path: root(DIST),
+      filename: '[name].[hash].js'
+    },
+    resolve: {
+      extensions: ['.ts', '.js', '.json', '.scss'],
+      modules: [root(SRC), root('node_modules')]
+    },
     plugins: [
+      new CheckerPlugin(),
+      new DefinePlugin(stringifyEnv(env)),
       new LoaderOptionsPlugin({
         minimize: false,
         debug: true,
         options: { context: __dirname }
       })
     ]
-  });
+  };
 };

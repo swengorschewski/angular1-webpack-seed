@@ -20,6 +20,9 @@ module.exports = function (config) {
     webpackMiddleware: {
       noInfo: true
     },
+    client: {
+      captureConsole: true
+    },
     colors: true,
     browsers: ['PhantomJS'],
     singleRun: true

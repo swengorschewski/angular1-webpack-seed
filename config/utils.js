@@ -13,9 +13,9 @@ module.exports = {
   stringifyEnv: (env) => {
     env = Object
       .keys(env)
-      .reduce((env, key) => {
-        env[key] = JSON.stringify(env[key]);
-        return env;
+      .reduce((newEnv, key) => {
+        newEnv[`process.env.${key}`] = JSON.stringify(env[key]);
+        return newEnv;
       }, {});
     return Object.assign({}, env, {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)

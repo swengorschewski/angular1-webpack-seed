@@ -4,7 +4,6 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 module.exports = (env) => {
   return {
-    devtool: 'eval-cheap-module-source-map',
     output: {
       path: root(DIST),
       filename: '[name].[hash].js'

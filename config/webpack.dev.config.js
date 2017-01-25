@@ -1,7 +1,7 @@
 const autoprefixer = require('autoprefixer');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const { LoaderOptionsPlugin, NamedModulesPlugin } = require('webpack');
 const webpackMerge = require('webpack-merge');
 
 const commonConfig = require('./webpack.common.js');
@@ -11,6 +11,7 @@ module.exports = (env = {}) => {
   console.log('starting development build');
 
   return webpackMerge(commonConfig(env), {
+    devtool: 'source-map',
     entry: {
       polyfills: root(SRC, 'polyfills.ts'),
       vendor: root(SRC, 'vendor.ts'),
@@ -70,7 +71,8 @@ module.exports = (env = {}) => {
           postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
           context: __dirname
         }
-      })
+      }),
+      new NamedModulesPlugin()
     ]
   });
 };
